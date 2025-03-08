@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         
-        if (form.checkValidity()) {
+        if (this.checkValidity()) {
             // Recoger los datos del formulario
             const formData = {
                 nombres: document.getElementById('nombres').value,
@@ -199,10 +199,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             successToast.show();
             
-            // Limpiar el formulario
+            // Limpiar el formulario Y quitar las validaciones
             form.reset();
+            form.classList.remove('was-validated');
+            return; // Importante: salir de la función después de un envío exitoso
         }
         
+        // Si llegamos aquí, significa que hay errores de validación
         this.classList.add('was-validated');
     });
     
