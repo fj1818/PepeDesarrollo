@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepe Urueta - Formulario de Contacto</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS - Animate On Scroll Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="form-container">
+            <!-- Header con Logo -->
+            <header class="header-section">
+                <div class="logo-container" data-aos="fade-down" data-aos-duration="800">
+                    <img src="logo.png" alt="Pepe Urueta" class="logo">
+                </div>
+            </header>
+            
+            <!-- Tarjeta con lema motivacional -->
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="inspiration-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h2>Tu mejor versión empieza aquí</h2>
+                        <p>Mejora tu salud, cuerpo y mente con un plan personalizado.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pestañas de navegación -->
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="tabs-container" data-aos="fade-up" data-aos-delay="300">
+                        <div class="tab-header">
+                            <div class="tab active" data-tab="formulario">
+                                <i class="fas fa-clipboard-list"></i> Formulario
+                            </div>
+                            <div class="tab" data-tab="informacion">
+                                <i class="fas fa-info-circle"></i> Más información
+                            </div>
+                        </div>
+                        
+                        <!-- Contenido de las pestañas -->
+                        <div class="tab-content">
+                            <!-- Pestaña del formulario -->
+                            <div class="tab-pane active" id="formulario">
+                                <form id="contact-form" class="needs-validation" novalidate>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="nombres" class="form-label">Nombre(s) <span class="required">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Ingresa tu nombre" required>
+                                                <div class="invalid-feedback">
+                                                    Por favor ingresa tu nombre.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="apellidos" class="form-label">Apellidos <span class="required">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingresa tus apellidos" required>
+                                                <div class="invalid-feedback">
+                                                    Por favor ingresa tus apellidos.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="telefono" class="form-label">Teléfono <span class="required">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="10 dígitos" required>
+                                                <div class="invalid-feedback">
+                                                    Por favor ingresa un número telefónico válido.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="correo" class="form-label">Correo electrónico <span class="required">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                                <input type="email" class="form-control" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+                                                <div class="invalid-feedback">
+                                                    Por favor ingresa un correo electrónico válido.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="ubicacion" class="form-label">Ubicación <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                            <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder="Municipio, Estado" required>
+                                            <div class="invalid-feedback">
+                                                Por favor ingresa tu ubicación.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="canal" class="form-label">¿Cómo nos conociste? <span class="required">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
+                                            <select class="form-select" id="canal" name="canal" required>
+                                                <option value="" selected disabled>Selecciona una opción</option>
+                                                <option value="instagram">Instagram</option>
+                                                <option value="facebook">Facebook</option>
+                                                <option value="tiktok">TikTok</option>
+                                                <option value="youtube">YouTube</option>
+                                                <option value="twitter">Twitter</option>
+                                                <option value="referido">Me lo recomendó otra persona</option>
+                                                <option value="otro">Otro</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Por favor selecciona una opción.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3 referido-container d-none">
+                                        <label for="referido_nombre" class="form-label">¿Quién te recomendó nuestros servicios?</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-user-friends"></i></span>
+                                            <input type="text" class="form-control" id="referido_nombre" name="referido_nombre" placeholder="Nombre de quien te recomendó">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-center mt-4">
+                                        <button type="submit" class="btn btn-primary btn-lg">Enviar Información</button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Pestaña de Más Información -->
+                            <div class="tab-pane" id="informacion">
+                                <div class="profile-section">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-4 mb-4 mb-lg-0">
+                                            <div class="profile-image-container">
+                                                <img src="https://scontent.fmty4-1.fna.fbcdn.net/v/t39.30808-6/342983032_1618682438639687_5526932262723186059_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFy7h9M1INiwGtldrZNME6OnSO5CpoiLSOdI7kKmiItI7qso-MVNagqYw9Ve8ba3s4lqMJ8xndozi1owFo9UDhZ&_nc_ohc=tXg_PPZHaC8Q7kNvgHaaVQz&_nc_oc=Adhtp76B_-NA4ZltZcUg4X8idxTVIYqCr5okdKabu48_M3Pdjvf32eZi1K0eOCfKwL0&_nc_zt=23&_nc_ht=scontent.fmty4-1.fna&_nc_gid=AHExPjaqOM-UwipNtpcEusN&oh=00_AYF2f8IIjvfLmxgH33WAgdyph-rzI02IpbjjdfiwBx7MNg&oe=67D244DA" alt="Pepe Urueta" class="profile-image">
+                                                <div class="profile-social">
+                                                    <a href="https://www.instagram.com/pepeurueta/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                                    <a href="https://www.facebook.com/pepeurueta/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                                    <a href="https://www.tiktok.com/@pepeurueta?lang=es" target="_blank"><i class="fab fa-tiktok"></i></a>
+                                                    <a href="https://www.youtube.com/@PepeUrueta" target="_blank"><i class="fab fa-youtube"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="profile-info">
+                                                <h2 class="profile-name">Pepe Urueta</h2>
+                                                <div class="profile-tags">
+                                                    <span class="profile-tag">Maestro de Natación</span>
+                                                    <span class="profile-tag">Coach Fitness</span>
+                                                    <span class="profile-tag">Influencer</span>
+                                                    <span class="profile-tag">Motivador</span>
+                                                </div>
+                                                <p class="profile-motto">"Físicamente fuerte. Mentalmente indestructible."</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bio-cards mt-5">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-4">
+                                            <div class="bio-card" data-aos="fade-up" data-aos-delay="100">
+                                                <div class="bio-card-icon">
+                                                    <i class="fas fa-swimmer"></i>
+                                                </div>
+                                                <h3>Trayectoria Deportiva</h3>
+                                                <p>Pepe Urueta es un destacado maestro de natación en la Escuela de Natación Urueta y un reconocido influencer mexicano que ha forjado una carrera inspiradora. Con una sólida trayectoria como nadador profesional y gimnasta, ha combinado su pasión por el deporte y el fitness para ayudar a otros a alcanzar sus metas personales.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <div class="bio-card" data-aos="fade-up" data-aos-delay="200">
+                                                <div class="bio-card-icon">
+                                                    <i class="fas fa-brain"></i>
+                                                </div>
+                                                <h3>Enfoque Integral</h3>
+                                                <p>Con una actitud positiva y auténtica, comparte en sus redes sociales sus vivencias personales, incluyendo episodios de depresión y la experiencia de vivir con TDAH, lo que le permite conectar de manera sincera con su audiencia. Su enfoque integral promueve el equilibrio entre la salud física, mental y espiritual.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <div class="bio-card" data-aos="fade-up" data-aos-delay="300">
+                                                <div class="bio-card-icon">
+                                                    <i class="fas fa-fire-alt"></i>
+                                                </div>
+                                                <h3>Misión Personal</h3>
+                                                <p>Impulsado por su lema "Físicamente fuerte. Mentalmente indestructible.", Pepe Urueta se posiciona como un embajador del fitness y la motivación, comprometido con el bienestar de la comunidad. Su capacidad para inspirar y educar, combinada con un estilo fresco y humorístico, lo convierte en el aliado perfecto para transformar vidas.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-section mt-5" data-aos="fade-up">
+                                    <h3 class="text-center mb-4">Enfoque Filosófico</h3>
+                                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <div class="testimonial-card">
+                                                    <div class="testimonial-icon">
+                                                        <i class="fas fa-quote-left"></i>
+                                                    </div>
+                                                    <p class="testimonial-text">Su experiencia en el ámbito deportivo y su formación en comunicaciones le han permitido transmitir conocimientos de forma clara y motivadora, estableciéndose como una figura de referencia en el mundo del bienestar y la superación personal.</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="testimonial-card">
+                                                    <div class="testimonial-icon">
+                                                        <i class="fas fa-quote-left"></i>
+                                                    </div>
+                                                    <p class="testimonial-text">A lo largo de su carrera, Pepe ha demostrado que un estilo de vida saludable va mucho más allá de una buena apariencia física. Invita a su comunidad a adoptar hábitos de vida que potencien el bienestar total.</p>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="testimonial-card">
+                                                    <div class="testimonial-icon">
+                                                        <i class="fas fa-quote-left"></i>
+                                                    </div>
+                                                    <p class="testimonial-text">Su amor por el anime se refleja en la creatividad de sus contenidos, agregando un toque único y divertido que lo diferencia en el ámbito digital, mientras promueve el bienestar físico y mental.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                    </div>
+
+                                <div class="cta-section text-center mt-5 mb-4" data-aos="fade-up">
+                                    <h3>¿Listo para transformar tu vida?</h3>
+                                    <p>Ya sea a través de clases de natación, consejos de entrenamiento o mensajes de apoyo, Pepe te invita a descubrir una versión más saludable, equilibrada y feliz de ti mismo.</p>
+                                    <button type="button" class="btn btn-primary btn-lg mt-3" id="switchToFormBtn">¡Comenzar ahora!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer con enlaces de redes sociales -->
+            <footer class="footer-section">
+                <div class="container">
+                    <div class="social-links-container text-center">
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/pepeurueta/" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+                            <a href="https://www.facebook.com/pepeurueta/" target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a>
+                            <a href="https://www.tiktok.com/@pepeurueta?lang=es" target="_blank"><i class="fab fa-tiktok fa-lg"></i></a>
+                            <a href="https://www.youtube.com/@PepeUrueta" target="_blank"><i class="fab fa-youtube fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <!-- Toast Notification Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">¡Gracias por tu interés!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Recibimos tu información correctamente. Nos pondremos en contacto contigo a la brevedad.
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery, jQuery UI y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    
+    <!-- AOS - Animate On Scroll Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html> 
