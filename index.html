@@ -24,6 +24,125 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Awesomplete CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.css" />
+
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+
+    <!-- Mantener el tamaño de los campos -->
+    <style>
+    /* Reset y ajustes críticos para campos de formulario */
+    .form-control,
+    .form-select,
+    .input-group,
+    .input-group-text {
+        display: flex !important;
+        height: 46px !important;
+        min-height: 46px !important;
+        max-height: 46px !important;
+        line-height: 1.5 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Ajustes para el ícono del input-group */
+    .input-group-text {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 45px !important;
+        padding: 0.375rem 0.75rem !important;
+    }
+
+    /* Garantizar que los campos no cambien durante la validación */
+    .form-control:focus,
+    .form-select:focus {
+        box-shadow: 0 0 0 0.25rem rgba(253, 126, 20, 0.25) !important;
+        border-color: #fd7e14 !important;
+    }
+
+    /* Ocultar los íconos de validación */
+    .was-validated .form-control:valid,
+    .was-validated .form-control:invalid,
+    .was-validated .form-select:valid,
+    .was-validated .form-select:invalid {
+        background-image: none !important; 
+        padding-right: 0.75rem !important;
+        border-color: #ced4da !important;
+    }
+
+    /* Ubicar adecuadamente los mensajes de error */
+    .invalid-feedback {
+        position: static !important;
+        margin-top: 0.5rem !important;
+        font-size: 80% !important;
+        color: #ff4d4d !important;
+        display: none !important;
+    }
+
+    .was-validated .invalid-feedback {
+        display: block !important;
+    }
+
+    /* Asegurar que el contenedor tenga espacio para el mensaje */
+    .mb-3 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Ajustes específicos para Select2 */
+    .select2-container {
+        width: 100% !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection {
+        height: 46px !important;
+        min-height: 46px !important;
+        max-height: 46px !important;
+        border: 1px solid #ced4da !important;
+        border-radius: 0 0.375rem 0.375rem 0 !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+        line-height: 46px !important;
+        padding-left: 0.75rem !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--single .select2-selection__arrow {
+        height: 44px !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-dropdown {
+        border-color: #ced4da !important;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        z-index: 9999 !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-results__option {
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-results__option--highlighted {
+        background-color: #fd7e14 !important;
+        color: white !important;
+    }
+
+    /* Arreglo para el campo de ubicación partido */
+    .ubicacion-group .select2-container {
+        flex: 1 1 auto !important;
+        width: auto !important;
+    }
+
+    .input-group > .select2-container {
+        position: relative !important;
+        flex: 1 1 auto !important;
+        width: 1% !important;
+    }
+    </style>
 </head>
 <body>
     <div class="container-fluid p-0">
@@ -112,32 +231,35 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="mb-3">
-                                        <label for="ubicacion" class="form-label">Ubicación <span class="required">*</span></label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
-                                            <input type="text" class="form-control" id="ubicacion" name="ubicacion" placeholder="Municipio, Estado" required>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ubicacion" class="form-label">Ubicación <span class="required">*</span></label>
+                                            <div class="input-group ubicacion-group">
+                                                <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                                                <select class="form-select" id="ubicacion" name="ubicacion" required>
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
                                             <div class="invalid-feedback">
-                                                Por favor ingresa tu ubicación.
+                                                Por favor selecciona tu ubicación.
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div class="mb-3">
-                                        <label for="canal" class="form-label">¿Cómo nos conociste? <span class="required">*</span></label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
-                                            <select class="form-select" id="canal" name="canal" required>
-                                                <option value="" selected disabled>Selecciona una opción</option>
-                                                <option value="instagram">Instagram</option>
-                                                <option value="facebook">Facebook</option>
-                                                <option value="tiktok">TikTok</option>
-                                                <option value="youtube">YouTube</option>
-                                                <option value="twitter">Twitter</option>
-                                                <option value="otro">Otro</option>
-                                            </select>
-                                            <div class="invalid-feedback">
-                                                Por favor selecciona una opción.
+                                        <div class="col-md-6 mb-3">
+                                            <label for="canal" class="form-label">¿Cómo nos conociste? <span class="required">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
+                                                <select class="form-select" id="canal" name="canal" required>
+                                                    <option value="" selected disabled>Selecciona una opción</option>
+                                                    <option value="instagram">Instagram</option>
+                                                    <option value="facebook">Facebook</option>
+                                                    <option value="tiktok">TikTok</option>
+                                                    <option value="youtube">YouTube</option>
+                                                    <option value="twitter">Twitter</option>
+                                                    <option value="otro">Otro</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Por favor selecciona una opción.
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -287,7 +409,7 @@
             </div>
             <div class="toast-body">
                 <p>Recibimos tu información correctamente. Nos pondremos en contacto contigo a la brevedad.</p>
-                <p class="mt-2 mb-0">Mientras tanto, ¡te invitamos a conocer nuestras redes sociales!</p>
+                <p class="mt-2 mb-0">Mientras tanto, te invito a visitar mis redes sociales:</p>
                 <div class="toast-social-links mt-3">
                     <a href="https://www.instagram.com/pepeurueta/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.facebook.com/pepeurueta/" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -309,5 +431,79 @@
     
     <!-- Custom JS -->
     <script src="script.js"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Leaflet Control Geocoder -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <!-- Awesomplete JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js"></script>
+
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Configuración de Select2 para el campo de ubicación -->
+    <script>
+    // Ejecutar después de que el DOM esté completamente cargado
+    document.addEventListener('DOMContentLoaded', function() {
+        // Esperar a que jQuery esté cargado
+        setTimeout(function() {
+            // Destruir cualquier instancia existente de Select2
+            if ($.fn.select2 && $('#ubicacion').data('select2')) {
+                $('#ubicacion').select2('destroy');
+            }
+            
+            // Inicializar Select2 en el campo de ubicación
+            $('#ubicacion').select2({
+                theme: 'bootstrap-5',
+                width: '100%',
+                placeholder: 'Busca y selecciona tu ubicación',
+                dropdownParent: $('.ubicacion-group'),
+                allowClear: true,
+                language: {
+                    noResults: function() {
+                        return "No se encontraron resultados";
+                    },
+                    searching: function() {
+                        return "Buscando...";
+                    }
+                }
+            }).on('select2:open', function() {
+                // Forzar que el dropdown se posicione correctamente
+                setTimeout(function() {
+                    $('.select2-results__options').css('max-height', '200px');
+                    $('.select2-dropdown').css({
+                        'width': $('.ubicacion-group').width() + 'px',
+                        'margin-top': '1px'
+                    });
+                }, 10);
+            });
+            
+            // Escuchar el evento submit del formulario
+            const form = document.getElementById('contact-form');
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    this.classList.remove('was-validated');
+                    
+                    if (!this.checkValidity()) {
+                        this.classList.add('was-validated');
+                    } else {
+                        // Formulario válido
+                        var successToast = new bootstrap.Toast(document.getElementById('successToast'));
+                        successToast.show();
+                        
+                        // Resetear formulario
+                        this.reset();
+                        this.classList.remove('was-validated');
+                        $('#ubicacion').val(null).trigger('change');
+                    }
+                });
+            }
+        }, 500); // Esperar 500ms para asegurar que todos los recursos estén cargados
+    });
+    </script>
 </body>
 </html> 

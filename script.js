@@ -29,135 +29,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Autocompletado para ubicación (municipios y estados de México)
-    const ubicaciones = [
-        "Aguascalientes, Aguascalientes",
-        "Asientos, Aguascalientes",
-        "Calvillo, Aguascalientes",
-        "Cosío, Aguascalientes",
-        "Jesús María, Aguascalientes",
-        "Pabellón de Arteaga, Aguascalientes",
-        "Rincón de Romos, Aguascalientes",
-        "San José de Gracia, Aguascalientes",
-        "Tepezalá, Aguascalientes",
-        "Ensenada, Baja California",
-        "Mexicali, Baja California",
-        "Playas de Rosarito, Baja California",
-        "Tecate, Baja California",
-        "Tijuana, Baja California",
-        "Comondú, Baja California Sur",
-        "La Paz, Baja California Sur",
-        "Loreto, Baja California Sur",
-        "Los Cabos, Baja California Sur",
-        "Mulegé, Baja California Sur",
-        "Campeche, Campeche",
-        "Carmen, Campeche",
-        "Champotón, Campeche",
-        "Escárcega, Campeche",
-        "Hecelchakán, Campeche",
-        "Hopelchén, Campeche",
-        "Tenabo, Campeche",
-        "Chihuahua, Chihuahua",
-        "Ciudad Juárez, Chihuahua",
-        "Cuauhtémoc, Chihuahua",
-        "Delicias, Chihuahua",
-        "Hidalgo del Parral, Chihuahua",
-        "Ciudad de México, Ciudad de México",
-        "Álvaro Obregón, Ciudad de México",
-        "Azcapotzalco, Ciudad de México",
-        "Benito Juárez, Ciudad de México",
-        "Coyoacán, Ciudad de México",
-        "Cuajimalpa, Ciudad de México",
-        "Cuauhtémoc, Ciudad de México",
-        "Gustavo A. Madero, Ciudad de México",
-        "Iztacalco, Ciudad de México",
-        "Iztapalapa, Ciudad de México",
-        "La Magdalena Contreras, Ciudad de México",
-        "Miguel Hidalgo, Ciudad de México",
-        "Milpa Alta, Ciudad de México",
-        "Tláhuac, Ciudad de México",
-        "Tlalpan, Ciudad de México",
-        "Venustiano Carranza, Ciudad de México",
-        "Xochimilco, Ciudad de México",
-        "Durango, Durango",
-        "Gómez Palacio, Durango",
-        "Lerdo, Durango",
-        "Celaya, Guanajuato",
-        "Guanajuato, Guanajuato",
-        "Irapuato, Guanajuato",
-        "León, Guanajuato",
-        "Salamanca, Guanajuato",
-        "San Miguel de Allende, Guanajuato",
-        "Silao, Guanajuato",
-        "Acapulco, Guerrero",
-        "Chilpancingo, Guerrero",
-        "Iguala, Guerrero",
-        "Taxco, Guerrero",
-        "Zihuatanejo, Guerrero",
-        "Pachuca, Hidalgo",
-        "Tulancingo, Hidalgo",
-        "Tula, Hidalgo",
-        "Guadalajara, Jalisco",
-        "Puerto Vallarta, Jalisco",
-        "Tlaquepaque, Jalisco",
-        "Tonalá, Jalisco",
-        "Zapopan, Jalisco",
-        "Toluca, Estado de México",
-        "Ecatepec, Estado de México",
-        "Naucalpan, Estado de México",
-        "Nezahualcóyotl, Estado de México",
-        "Tlalnepantla, Estado de México",
-        "Morelia, Michoacán",
-        "Uruapan, Michoacán",
-        "Zamora, Michoacán",
-        "Cuernavaca, Morelos",
-        "Cuautla, Morelos",
-        "Jiutepec, Morelos",
-        "Tepic, Nayarit",
-        "Monterrey, Nuevo León",
-        "Apodaca, Nuevo León",
-        "Escobedo, Nuevo León",
-        "Guadalupe, Nuevo León",
-        "San Nicolás de los Garza, Nuevo León",
-        "San Pedro Garza García, Nuevo León",
-        "Oaxaca, Oaxaca",
-        "Puebla, Puebla",
-        "Querétaro, Querétaro",
-        "Cancún, Quintana Roo",
-        "Playa del Carmen, Quintana Roo",
-        "San Luis Potosí, San Luis Potosí",
-        "Culiacán, Sinaloa",
-        "Mazatlán, Sinaloa",
-        "Hermosillo, Sonora",
-        "Ciudad Obregón, Sonora",
-        "Villahermosa, Tabasco",
-        "Tampico, Tamaulipas",
-        "Ciudad Victoria, Tamaulipas",
-        "Nuevo Laredo, Tamaulipas",
-        "Reynosa, Tamaulipas",
-        "Matamoros, Tamaulipas",
-        "Tlaxcala, Tlaxcala",
-        "Veracruz, Veracruz",
-        "Xalapa, Veracruz",
-        "Coatzacoalcos, Veracruz",
-        "Mérida, Yucatán",
-        "Zacatecas, Zacatecas",
-        "Fresnillo, Zacatecas"
-    ];
-    
-    $("#ubicacion").autocomplete({
-        source: function(request, response) {
-            var term = $.ui.autocomplete.escapeRegex(request.term);
-            var matcher = new RegExp(term, "i");
-            response($.grep(ubicaciones, function(item) {
-                return matcher.test(item);
-            }));
-        },
-        minLength: 2,
-        select: function(event, ui) {
-            $("#ubicacion").val(ui.item.value);
-        }
-    });
+    // Cargar ubicaciones y configurar Select2 para el campo de ubicación
+    fetch('ubicaciones.json')
+        .then(response => response.json())
+        .then(data => {
+            const ubicacionSelect = document.getElementById('ubicacion');
+            
+            // Agregar las opciones al select
+            data.forEach(ubicacion => {
+                const option = document.createElement('option');
+                option.value = ubicacion;
+                option.textContent = ubicacion;
+                ubicacionSelect.appendChild(option);
+            });
+            
+            // Inicializar Select2 para el campo de ubicación
+            $(ubicacionSelect).select2({
+                theme: 'bootstrap-5',
+                width: '100%',
+                placeholder: 'Busca y selecciona tu ubicación',
+                allowClear: true,
+                language: {
+                    noResults: function() {
+                        return "No se encontraron resultados";
+                    },
+                    searching: function() {
+                        return "Buscando...";
+                    }
+                }
+            });
+            
+            // Restablecer Select2 cuando se reinicia el formulario
+            $('#contact-form').on('reset', function() {
+                setTimeout(function() {
+                    $(ubicacionSelect).val('').trigger('change');
+                }, 10);
+            });
+        });
     
     // Mostrar/ocultar campo de referido
     const canalSelect = document.getElementById('canal');
@@ -193,17 +101,27 @@ document.addEventListener('DOMContentLoaded', function() {
             // Imprimir los datos en la consola
             console.log('Datos del formulario:', formData);
             
-            // Mostrar el toast de éxito (configurado para no cerrarse automáticamente)
+            // Mostrar el toast de éxito
             var successToast = new bootstrap.Toast(document.getElementById('successToast'), {
                 autohide: false
             });
             successToast.show();
             
-            // Limpiar el formulario
+            // Resetear completamente el formulario y eliminar las validaciones
             form.reset();
+            form.classList.remove('was-validated');
+            
+            // Limpiar todas las validaciones
+            const inputs = form.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.classList.remove('is-invalid');
+                input.classList.remove('is-valid');
+                input.setCustomValidity('');
+            });
+        } else {
+            // Mostrar validaciones cuando hay errores
+            this.classList.add('was-validated');
         }
-        
-        this.classList.add('was-validated');
     });
     
     // Formato de teléfono mientras se escribe
