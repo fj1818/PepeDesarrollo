@@ -187,8 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 telefono: document.getElementById('telefono').value,
                 correo: document.getElementById('correo').value,
                 ubicacion: document.getElementById('ubicacion').value,
-                canal: document.getElementById('canal').value,
-                referido: document.getElementById('canal').value === 'referido' ? document.getElementById('referido_nombre').value : ''
+                canal: document.getElementById('canal').value
             };
             
             // Imprimir los datos en la consola
@@ -202,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Limpiar el formulario
             form.reset();
-            referidoContainer.classList.add('d-none');
         }
         
         this.classList.add('was-validated');

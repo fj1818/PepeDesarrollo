@@ -470,7 +470,7 @@ a:hover {
 
 /* Estilos para el toast personalizado */
 .custom-toast {
-    background-color: #ffffff;
+    background-color: #f0f4ff; /* Azul marino claro */
     border: none;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
@@ -481,7 +481,7 @@ a:hover {
 }
 
 .custom-toast-header {
-    background-color: #1a3c6e;
+    background-color: #1a3c6e; /* Azul marino */
     color: white;
     border-bottom: none;
     border-radius: 15px 15px 0 0;

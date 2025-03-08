@@ -31,7 +31,7 @@
             <!-- Header con Logo -->
             <header class="header-section">
                 <div class="logo-container" data-aos="fade-down" data-aos-duration="800">
-                    <img src="https://github.com/fj1818/PepeDesarrollo/blob/9e79ff8bd6e1bf0084274c8136e00c27a7bb04d5/Logo.png" alt="Pepe Urueta" class="logo">
+                    <img src="logo.png" alt="Pepe Urueta" class="logo">
                 </div>
             </header>
             
@@ -134,20 +134,11 @@
                                                 <option value="tiktok">TikTok</option>
                                                 <option value="youtube">YouTube</option>
                                                 <option value="twitter">Twitter</option>
-                                                <option value="referido">Me lo recomendó otra persona</option>
                                                 <option value="otro">Otro</option>
                                             </select>
                                             <div class="invalid-feedback">
                                                 Por favor selecciona una opción.
                                             </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="mb-3 referido-container d-none">
-                                        <label for="referido_nombre" class="form-label">¿Quién te recomendó nuestros servicios?</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text"><i class="fas fa-user-friends"></i></span>
-                                            <input type="text" class="form-control" id="referido_nombre" name="referido_nombre" placeholder="Nombre de quien te recomendó">
                                         </div>
                                     </div>
                                     
@@ -287,14 +278,22 @@
     </div>
     
     <!-- Toast Notification Container -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
+    <div class="toast-container position-fixed top-50 start-50 translate-middle p-3">
+        <div id="successToast" class="toast custom-toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+            <div class="toast-header custom-toast-header">
+                <i class="fas fa-check-circle me-2"></i>
                 <strong class="me-auto">¡Gracias por tu interés!</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-                Recibimos tu información correctamente. Nos pondremos en contacto contigo a la brevedad.
+                <p>Recibimos tu información correctamente. Nos pondremos en contacto contigo a la brevedad.</p>
+                <p class="mt-2 mb-0">Mientras tanto, ¡te invitamos a conocer nuestras redes sociales!</p>
+                <div class="toast-social-links mt-3">
+                    <a href="https://www.instagram.com/pepeurueta/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/pepeurueta/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@pepeurueta?lang=es" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.youtube.com/@PepeUrueta" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
     </div>
