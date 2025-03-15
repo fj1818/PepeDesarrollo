@@ -266,13 +266,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Alternar entre foto1 y foto2 al hacer clic en la imagen de perfil
+    // Alternar entre Foto1 y Foto2 al hacer clic en la imagen de perfil
     const profileImage = document.getElementById('profile-image');
     if (profileImage) {
         let currentImage = 1;
         profileImage.addEventListener('click', function() {
             currentImage = currentImage === 1 ? 2 : 1;
-            this.src = `foto${currentImage}.jpg`;
+            this.src = `Foto${currentImage}.jpg`;
             
             // Añadir efecto de transición
             this.style.opacity = '0';
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Variables para gestionar el estado del popup
     let currentImageIndex = 0;
-    const galleryImages = ['foto3.jpg', 'foto4.jpg', 'foto5.jpg', 'foto6.jpg'];
+    const galleryImages = ['Foto3.jpg', 'Foto4.jpg', 'Foto5.jpg', 'Foto6.jpg'];
     
     // Función para abrir el popup
     function openPopup(index) {
