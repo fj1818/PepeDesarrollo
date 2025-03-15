@@ -28,25 +28,28 @@
 <body>
     <div class="container-fluid p-0">
         <div class="form-container">
-            <!-- Header con Logo -->
-            <header class="header-section">
-                <div class="logo-container" data-aos="fade-down" data-aos-duration="800">
-                    <img src="logo.png" alt="Pepe Urueta" class="logo">
-                </div>
-            </header>
-            
-            <!-- Tarjeta con lema motivacional -->
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="inspiration-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-icon">
-                            <i class="fas fa-bolt"></i>
+            <!-- Estructura mejorada del header para mejor integración visual -->
+            <header class="brand-header">
+                <div class="brand-overlay"></div>
+                <div class="brand-content">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="logo-wrapper">
+                                <img src="logo.png" alt="Pepe Urueta" class="brand-logo">
+                            </div>
                         </div>
-                        <h2>Tu mejor versión empieza aquí</h2>
-                        <p>Mejora tu salud, cuerpo y mente con un plan personalizado.</p>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="brand-message">
+                                <h1 class="brand-title">Tu mejor versión empieza aquí</h1>
+                                <p class="brand-subtitle">Mejora tu salud, cuerpo y mente con un plan personalizado.</p>
+                                <div class="brand-motto">
+                                    <span>Físicamente fuerte, mentalmente indestructible</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </header>
             
             <!-- Pestañas de navegación -->
             <div class="row justify-content-center">
@@ -150,11 +153,13 @@
                             
                             <!-- Pestaña de Más Información -->
                             <div class="tab-pane" id="informacion">
+                                <!-- Sección de perfil mejorada con imágenes alternantes -->
                                 <div class="profile-section">
                                     <div class="row align-items-center">
-                                        <div class="col-lg-4 mb-4 mb-lg-0">
+                                        <div class="col-lg-4">
                                             <div class="profile-image-container">
-                                                <img src="https://scontent.fmty4-1.fna.fbcdn.net/v/t39.30808-6/342983032_1618682438639687_5526932262723186059_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFy7h9M1INiwGtldrZNME6OnSO5CpoiLSOdI7kKmiItI7qso-MVNagqYw9Ve8ba3s4lqMJ8xndozi1owFo9UDhZ&_nc_ohc=tXg_PPZHaC8Q7kNvgHaaVQz&_nc_oc=Adhtp76B_-NA4ZltZcUg4X8idxTVIYqCr5okdKabu48_M3Pdjvf32eZi1K0eOCfKwL0&_nc_zt=23&_nc_ht=scontent.fmty4-1.fna&_nc_gid=AHExPjaqOM-UwipNtpcEusN&oh=00_AYF2f8IIjvfLmxgH33WAgdyph-rzI02IpbjjdfiwBx7MNg&oe=67D244DA" alt="Pepe Urueta" class="profile-image">
+                                                <img src="foto1.jpg" alt="Pepe Urueta" class="profile-image" id="profile-image">
+                                                <div class="profile-image-hint">Haz clic para cambiar</div>
                                                 <div class="profile-social">
                                                     <a href="https://www.instagram.com/pepeurueta/" target="_blank"><i class="fab fa-instagram"></i></a>
                                                     <a href="https://www.facebook.com/pepeurueta/" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -165,14 +170,56 @@
                                         </div>
                                         <div class="col-lg-8">
                                             <div class="profile-info">
-                                                <h2 class="profile-name">Pepe Urueta</h2>
+                                                <h1 class="profile-name">Pepe Urueta</h1>
                                                 <div class="profile-tags">
-                                                    <span class="profile-tag">Maestro de Natación</span>
-                                                    <span class="profile-tag">Coach Fitness</span>
-                                                    <span class="profile-tag">Influencer</span>
-                                                    <span class="profile-tag">Motivador</span>
+                                                    <span class="profile-tag">Entrenador Personal</span>
+                                                    <span class="profile-tag">Coach de Vida</span>
+                                                    <span class="profile-tag">Emprendedor</span>
                                                 </div>
-                                                <p class="profile-motto">"Físicamente fuerte. Mentalmente indestructible."</p>
+                                                <p class="profile-description text-justify">
+                                                    Soy un entrenador personal que busca desarrollar en sus alumnos no solo un cuerpo fuerte sino una mente indestructible. Mi filosofía de trabajo se basa en el equilibrio entre esfuerzo físico y enfoque mental. Creo firmemente que cualquier persona puede lograr una transformación integral con la guía y el apoyo adecuados.
+                                                </p>
+                                                <p class="profile-motto">"Físicamente fuerte, mentalmente indestructible"</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Galería de imágenes mejorada -->
+                                <div class="gallery-section" data-aos="fade-up">
+                                    <h2 class="section-title">Mi Trabajo</h2>
+                                    <p class="text-center gallery-intro">Conoce un poco más de mis entrenamientos y resultados a través de estas imágenes</p>
+                                    <div class="gallery-grid">
+                                        <div class="gallery-item" data-index="0">
+                                            <img src="foto3.jpg" alt="Entrenamiento" class="gallery-img">
+                                            <div class="gallery-overlay">
+                                                <div class="gallery-icon">
+                                                    <i class="fas fa-search-plus"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-item" data-index="1">
+                                            <img src="foto4.jpg" alt="Entrenamiento" class="gallery-img">
+                                            <div class="gallery-overlay">
+                                                <div class="gallery-icon">
+                                                    <i class="fas fa-search-plus"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-item" data-index="2">
+                                            <img src="foto5.jpg" alt="Entrenamiento" class="gallery-img">
+                                            <div class="gallery-overlay">
+                                                <div class="gallery-icon">
+                                                    <i class="fas fa-search-plus"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-item" data-index="3">
+                                            <img src="foto6.jpg" alt="Entrenamiento" class="gallery-img">
+                                            <div class="gallery-overlay">
+                                                <div class="gallery-icon">
+                                                    <i class="fas fa-search-plus"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -295,6 +342,28 @@
                     <a href="https://www.youtube.com/@PepeUrueta" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Popup para galería de imágenes -->
+    <div id="imagePopup" class="image-popup">
+        <div class="popup-overlay"></div>
+        <div class="popup-container">
+            <button class="popup-close" id="closePopup">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-content">
+                <img src="" alt="Imagen ampliada" id="popupImage">
+            </div>
+            <div class="popup-navigation">
+                <button class="popup-nav-btn popup-prev" id="prevImage">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="popup-nav-btn popup-next" id="nextImage">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="popup-counter" id="imageCounter">1/4</div>
         </div>
     </div>
 

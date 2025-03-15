@@ -265,4 +265,118 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.tab[data-tab="formulario"]').click();
         });
     }
+    
+    // Alternar entre foto1 y foto2 al hacer clic en la imagen de perfil
+    const profileImage = document.getElementById('profile-image');
+    if (profileImage) {
+        let currentImage = 1;
+        profileImage.addEventListener('click', function() {
+            currentImage = currentImage === 1 ? 2 : 1;
+            this.src = `foto${currentImage}.jpg`;
+            
+            // Añadir efecto de transición
+            this.style.opacity = '0';
+            setTimeout(() => {
+                this.style.opacity = '1';
+            }, 100);
+        });
+    }
+    
+    // Gestión de popup para galería
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const imagePopup = document.getElementById('imagePopup');
+    const popupImage = document.getElementById('popupImage');
+    const closePopup = document.getElementById('closePopup');
+    const prevImage = document.getElementById('prevImage');
+    const nextImage = document.getElementById('nextImage');
+    const imageCounter = document.getElementById('imageCounter');
+    
+    // Variables para gestionar el estado del popup
+    let currentImageIndex = 0;
+    const galleryImages = ['foto3.jpg', 'foto4.jpg', 'foto5.jpg', 'foto6.jpg'];
+    
+    // Función para abrir el popup
+    function openPopup(index) {
+        currentImageIndex = index;
+        popupImage.src = galleryImages[index];
+        imagePopup.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Evitar scroll
+        updateCounter();
+        
+        // Efecto de fade-in
+        setTimeout(() => {
+            imagePopup.style.opacity = '1';
+        }, 10);
+    }
+    
+    // Función para cerrar el popup
+    function closePopupHandler() {
+        imagePopup.style.opacity = '0';
+        setTimeout(() => {
+            imagePopup.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }, 300);
+    }
+    
+    // Función para navegar a la imagen anterior
+    function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        popupImage.style.opacity = '0';
+        setTimeout(() => {
+            popupImage.src = galleryImages[currentImageIndex];
+            popupImage.style.opacity = '1';
+            updateCounter();
+        }, 200);
+    }
+    
+    // Función para navegar a la siguiente imagen
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        popupImage.style.opacity = '0';
+        setTimeout(() => {
+            popupImage.src = galleryImages[currentImageIndex];
+            popupImage.style.opacity = '1';
+            updateCounter();
+        }, 200);
+    }
+    
+    // Actualizar el contador de imágenes
+    function updateCounter() {
+        imageCounter.textContent = `${currentImageIndex + 1}/${galleryImages.length}`;
+    }
+    
+    // Asignar eventos a los items de la galería
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            openPopup(index);
+        });
+    });
+    
+    // Eventos para los controles del popup
+    closePopup.addEventListener('click', closePopupHandler);
+    prevImage.addEventListener('click', showPrevImage);
+    nextImage.addEventListener('click', showNextImage);
+    
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && imagePopup.style.display === 'block') {
+            closePopupHandler();
+        } else if (e.key === 'ArrowLeft' && imagePopup.style.display === 'block') {
+            showPrevImage();
+        } else if (e.key === 'ArrowRight' && imagePopup.style.display === 'block') {
+            showNextImage();
+        }
+    });
+    
+    // Cerrar haciendo clic en el fondo
+    imagePopup.querySelector('.popup-overlay').addEventListener('click', closePopupHandler);
+    
+    // Botón de acción en la sección hero
+    const heroActionBtn = document.getElementById('heroActionBtn');
+    if (heroActionBtn) {
+        heroActionBtn.addEventListener('click', function() {
+            // Activar la pestaña del formulario
+            document.querySelector('.tab[data-tab="formulario"]').click();
+        });
+    }
 }); 
