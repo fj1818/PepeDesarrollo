@@ -190,7 +190,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 telefono: document.getElementById('telefono').value,
                 correo: document.getElementById('correo').value,
                 ubicacion: document.getElementById('ubicacion').value,
-                canal: document.getElementById('canal').value
+                canal: document.getElementById('canal').value,
+                contactado: "false",
+                interesado: "no"
             };
             
             // Si el canal es "referido", incluir el nombre del referido
