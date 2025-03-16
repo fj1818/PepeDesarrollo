@@ -180,6 +180,9 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         
         if (this.checkValidity()) {
+            // URL del script de Google Apps
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyl4MKOjZI6gV7qAgbjU2_FabOO4jCL11oQy0CE4ayjS_IpSB7Vxf0E0Hrg1IHMhOhPqg/exec';
+            
             // Recoger los datos del formulario
             const formData = {
                 nombres: document.getElementById('nombres').value,
@@ -190,19 +193,55 @@ document.addEventListener('DOMContentLoaded', function() {
                 canal: document.getElementById('canal').value
             };
             
-            // Imprimir los datos en la consola
-            console.log('Datos del formulario:', formData);
+            // Si el canal es "referido", incluir el nombre del referido
+            if (formData.canal === 'referido') {
+                formData.referido_nombre = document.getElementById('referido_nombre').value;
+            }
             
-            // Mostrar el toast de éxito (configurado para no cerrarse automáticamente)
-            var successToast = new bootstrap.Toast(document.getElementById('successToast'), {
-                autohide: false
+            // Mostrar indicador de carga
+            const submitBtn = document.querySelector('#contact-form button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
+            submitBtn.disabled = true;
+            
+            // Enviar los datos usando fetch y formateándolos con URLSearchParams
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors', // Usa "no-cors" si no requieres procesar la respuesta
+                body: new URLSearchParams(formData)
+            })
+            .then(() => {
+                // Mostrar el toast de éxito
+                var successToast = new bootstrap.Toast(document.getElementById('successToast'), {
+                    autohide: false
+                });
+                successToast.show();
+                
+                // Limpiar el formulario y quitar las validaciones
+                form.reset();
+                form.classList.remove('was-validated');
+                
+                // Restaurar el botón
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+                
+                console.log('Datos enviados correctamente a Google Sheets');
+            })
+            .catch(error => {
+                console.error('Error al enviar datos:', error);
+                
+                // Mostrar mensaje de error
+                var errorToast = new bootstrap.Toast(document.getElementById('errorToast'), {
+                    autohide: false
+                });
+                errorToast.show();
+                
+                // Restaurar el botón
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
             });
-            successToast.show();
             
-            // Limpiar el formulario Y quitar las validaciones
-            form.reset();
-            form.classList.remove('was-validated');
-            return; // Importante: salir de la función después de un envío exitoso
+            return;
         }
         
         // Si llegamos aquí, significa que hay errores de validación
